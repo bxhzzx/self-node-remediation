@@ -412,8 +412,8 @@ func (r *SelfNodeRemediationReconciler) prepareReboot(node *v1.Node, snr *v1alph
 		r.updateTimeAssumedRebooted(node, snr)
 	}
 
-	preRebootCompleted := string(preRebootCompletedPhase)
-	snr.Status.Phase = &preRebootCompleted
+	rebootCompleted := string(rebootCompletedPhase)
+	snr.Status.Phase = &rebootCompleted
 
 	return ctrl.Result{}, nil
 }
