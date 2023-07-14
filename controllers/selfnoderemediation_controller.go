@@ -414,6 +414,7 @@ func (r *SelfNodeRemediationReconciler) prepareReboot(node *v1.Node, snr *v1alph
 
 	rebootCompleted := string(rebootCompletedPhase)
 	snr.Status.Phase = &rebootCompleted
+	r.logger.Info("[in prepareReboot func] Skip setting to `Pre-Reboot-Completed` and set to `Reboot-Completed` instead")
 
 	return ctrl.Result{}, nil
 }
@@ -423,6 +424,7 @@ func (r *SelfNodeRemediationReconciler) handlePreRebootCompletedPhase(node *v1.N
 }
 
 func (r *SelfNodeRemediationReconciler) rebootNode(node *v1.Node, snr *v1alpha1.SelfNodeRemediation) (ctrl.Result, error) {
+	r.logger.Info("[in rebootNode func] This line of code should not be executed")
 	r.logger.Info("node reboot not completed yet, start rebooting")
 	if r.MyNodeName == node.Name {
 		// we have a problem on this node, reboot!
